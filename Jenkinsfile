@@ -11,6 +11,17 @@ pipeline {
                 sh 'docker build -t lanzadados-app .'
             }
         }
+        stage('Remove Existing Container') {
+            steps {
+                script {
+                    def containerId = sh(script: "docker ps -a -q -f name=lanzadados-container", returnStdout: true).trim()
+                    if (containerId) {
+                        sh "docker stop ${containerId}"
+                        sh "docker rm ${containerId}"
+                    }
+                }
+            }
+        }
         stage('Run Docker Container') {
             steps {
                 sh 'docker run --name lanzadados-container -d lanzadados-app'
