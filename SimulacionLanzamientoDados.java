@@ -7,7 +7,7 @@ public class SimulacionLanzamientoDados {
             resultados[i] = lanzarDado();
         }
 
-        System.out.println("Resultados de los lanzamientos de dado:");
+        System.out.println("Resultados de los lanzamientos de dados:");
         for (int i = 0; i < resultados.length; i++) {
             System.out.println("Lanzamiento " + (i + 1) + ": " + resultados[i]);
         }
