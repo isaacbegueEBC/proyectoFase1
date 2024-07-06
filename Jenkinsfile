@@ -8,17 +8,17 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t lanzadados-app .'
+                sh 'sudo docker build -t lanzadados-app .'
             }
         }
         stage('Run Docker Container') {
             steps {
-                sh 'docker run --name lanzadados-container -d lanzadados-app'
+                sh 'sudo docker run --name lanzadados-container -d lanzadados-app'
             }
         }
         stage('Verify Logs') {
             steps {
-                sh 'docker logs lanzadados-container'
+                sh 'sudo docker logs lanzadados-container'
             }
         }
     }
