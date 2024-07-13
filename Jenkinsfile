@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'sudo docker build -t lanzadados-app .'
+                sh 'docker build -t lanzadados-app .'
             }
         }
         stage('Remove Existing Container') {
@@ -24,22 +24,22 @@ pipeline {
         }
         stage('Run Docker Container') {
             steps {
-                sh 'sudo docker run --name lanzadados-container -d lanzadados-app'
+                sh 'docker run --name lanzadados-container -d lanzadados-app'
             }
         }
         stage('Verify Logs') {
             steps {
-                sh 'sudo docker logs lanzadados-container'
+                sh 'docker logs lanzadados-container'
             }
         }
         stage('Verificar las las images') {
             steps {
-                sh 'sudo docker images'
+                sh 'docker images'
             }
         }
         stage('Cleanup Docker Images') {
             steps {
-                sh 'sudo docker image prune -f'
+                sh 'docker image prune -f'
             }
         }
     }
