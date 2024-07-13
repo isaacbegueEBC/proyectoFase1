@@ -32,6 +32,11 @@ pipeline {
                 sh 'docker logs lanzadados-container'
             }
         }
+        stage('Verificar las las images') {
+            steps {
+                sh 'sudo docker images'
+            }
+        }
         stage('Cleanup Docker Images') {
             steps {
                 sh 'docker image prune -f'
