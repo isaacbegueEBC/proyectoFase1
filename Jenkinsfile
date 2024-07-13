@@ -32,5 +32,10 @@ pipeline {
                 sh 'docker logs lanzadados-container'
             }
         }
+        stage('Cleanup Docker Images') {
+            steps {
+                sh 'docker image prune -f'
+            }
+        }
     }
 }
